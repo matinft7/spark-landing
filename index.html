@@ -36,7 +36,8 @@
 
         body {
             background-color: var(--bg-1);
-            background-image: var(--bg-1);
+            background-image: radial-gradient(circle at 15% 50%, rgba(138, 43, 226, 0.1), transparent 30%),
+                              radial-gradient(circle at 85% 30%, rgba(0, 245, 255, 0.08), transparent 35%);
             color: var(--text-primary);
             line-height: 1.7;
             direction: rtl;
@@ -748,7 +749,7 @@
         })();
 
         /* Scroll Animation */
-        /*(function() {
+        (function() {
             const animatedSections = document.querySelectorAll('.animated-section');
             if (!animatedSections.length) return;
 
@@ -766,7 +767,7 @@
             animatedSections.forEach(section => {
                 observer.observe(section);
             });
-        })();*/
+        })();
     </script>
 </body>
 </html>
