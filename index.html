@@ -750,7 +750,7 @@
         })();
 
         /* Scroll Animation */
-        /*(function() {
+        (function() {
             const animatedSections = document.querySelectorAll('.animated-section');
             if (!animatedSections.length) return;
 
@@ -768,7 +768,29 @@
             animatedSections.forEach(section => {
                 observer.observe(section);
             });
-        })();*/
+        })();
+
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    window.addEventListener('load', () => {
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+      if (document.activeElement && document.activeElement !== document.body) {
+        document.activeElement.blur();
+      }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + id);
+      });
+    });
     </script>
 </body>
 </html>
